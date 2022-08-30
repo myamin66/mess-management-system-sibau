@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Update Mess Menu</title>
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-primary">Go to Home</a>
+    <div class="container" id="content" style="margin-top:10%;">
+    <form action="#" th:action="@{/menu/saveUpdate}" th:object="${messMenu}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <fieldset>
+            <legend style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Update Mess Menu
+            </legend>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="sunday">Sunday</label>
+                    <input autofocus title="Sunday menu" th:field="*{sunday}" type="text"
+                           class="form-control" id="sunday" aria-describedby="sundayHelp"
+                           placeholder="Enter Sunday menu" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="monday">Monday</label>
+                    <input title="Monday menu" th:field="*{monday}" type="text"
+                           class="form-control" id="monday" placeholder="monday menu" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="tuesday">Tuesday</label>
+                    <input th:field="*{tuesday}" type="text" title="Tuesday menu"
+                           class="form-control" id="tuesday" placeholder="Tuesday menu" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="Wednesday">Wednesday</label>
+                    <input title="Wednesday menu" th:field="*{wednesday}" type="text" class="form-control"
+                           id="Wednesday" placeholder="Wednesday menu" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="Thursday">Thursday</label>
+                    <input title="Thursday menu" th:field="*{thursday}" type="text" class="form-control"
+                           id="Thursday" placeholder="Thursday menu" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="Friday">Friday</label>
+                    <input title="Friday menu" th:field="*{friday}"
+                           type="text" class="form-control" id="Friday"
+                           placeholder="Friday menu" required>
+                </div>
+            </div>
+            <div class="form-group row">
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="Saturday">Saturday</label>
+                    <input title="Saturday menu" th:field="*{saturday}"
+                           type="text" class="form-control" id="Saturday"
+                           placeholder="Saturday menu" required>
+                </div>
+            </div>
+            <div class="row" th:if="${error}">
+                <p style="color:red; font-family:'Eras Bold ITC'" th:text="${error}"></p>
+            </div>
+            <span id="showBtnUpdate">
+        <button type="submit" class="btn btn-primary">Save Menu</button>
+    </span>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

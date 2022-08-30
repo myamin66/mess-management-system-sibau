@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SIBAU MESS</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+<!--    <link rel="icon" type="image/x-icon" href="img/favicon.ico">-->
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="vendor/venobox/venobox.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/superfish/superfish.min.js"></script>
+    <script src="vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<header id="header">
+    <div id="logo" class="pull-left">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <a th:href="@{/}">Siba <span>Mess System</span></a>
+    </div>
+
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li class="menu-active"><a th:href="@{/}">Home</a></li>
+            <li><a href="#cookandhelper">Cook and Helpers</a></li>
+            <li><a href="#numbers">Students</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#onoff">ON/OFF</a></li>
+            <li><a href="#payments">Payments</a></li>
+            <li><a href="#messtimings">Timings</a></li>
+            <li><a href="#unitsdetails">Units Details</a></li>
+            <li><a href="#messmanagers">Mess Managers</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#contactus">Contact Us</a></li>
+            <li class="buy-tickets"><a th:href="@{/login}">Login</a></li>
+            <li class="buy-tickets"><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<section id="intro">
+    <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1 class="mb-4 pb-0">Welcome to<br><span>Sukkur IBA</span><br> Mess Management System</h1>
+        <a href="https://pscs.iba-suk.edu.pk/psp/HRCS9/?cmd=login&languageCd=ENG&" class="about-btn scrollto">Go to
+            CMS</a>
+        <a href="http://lms.iba-suk.edu.pk/login/index.php" class="about-btn scrollto">Go to LMS</a>
+        <a class="about-btn scrollto" th:href="@{/deletedData}">Show Deleted Records</a>
+    </div>
+</section>
+
+<main id="main">
+
+    <section id="cookandhelper">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Cook and Helper</h2>
+                    <h3 style="margin-left: 120px">Cook</h3>
+                    <label>Name: </label>&nbsp <input type="text" readonly th:value="${cookDetails.get(0)}" name="name"><br>
+                    <label>Phone: </label> <input readonly th:value="${cookDetails.get(1)}" type="text"
+                                                  name="Phone"><br>
+                    <h1 th:if="${cookExists}" style="color: red">Please delete or update cook first</h1>
+                    <label><a th:href="@{/showFormForUpdateCook/{id}(id=${cookDetails.get(2)})}" style="margin-top: 60%" class="btn btn-outline-primary">Edit</a>
+                        <a th:href="@{/deleteCook/{id}(id=${cookDetails.get(2)})}" style="margin-top: 60%" class="btn btn-danger btn-sm">Delete</a>
+                    </label>
+                    <br>
+                </div>
+                <div class="col-lg-3">
+                    <h3 style="margin-top: 33px; margin-right: 10px">Helper</h3>
+                    <label style="margin-top: 7%">Name: </label>&nbsp <input readonly th:value="${helperDetails.get(0)}" type="text" name="name"><br>
+                    <label>Phone: </label> <input readonly th:value="${helperDetails.get(1)}" type="text" name="Phone"><br>
+                </div>
+                <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+                    <a th:href="@{addCookHelpers}" style="margin-top: 60%" class="btn btn-dark">Add new Record</a>
+                    <a th:href="@{/showFormForUpdateHelper/{id}(id=${helperDetails.get(2)})}" style="margin-top: 60%" class="btn btn-outline-primary">Edit</a>
+                    <a th:href="@{/deleteHelper/{id}(id=${helperDetails.get(2)})}" style="margin-top: 60%" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Counter Data</h2>
+                <p>Here are some counter details of mess</p>
+            </div>
+            <div class="col-sm-12 row">
+                <div class="col-sm-3 border rounded shadow-lg p-3 mb-5 hoverFailure one hov"
+                     style="background-color: rgb(202, 2, 52);">
+                    <a class="linkdeco">
+                        <i class="fa fa-list-alt fa-3x animated bounce slow"
+                           style="color: rgb(250, 245, 248);position: absolute;margin-top: 8px;"></i>
+                        <h3 th:text="${numStudents}" class="text-center text-white">5000</h3>
+                        <p class="text-center text-white">Students</p>
+                    </a>
+                </div>
+                <div class="col-sm-3 border rounded shadow-lg p-3 mb-5 hoverFailure one hov"
+                     style="background-color: rgb(87, 145, 34);">
+                    <a class="linkdeco">
+                        <i class="fa fa-tag fa-3x animated bounce slow"
+                           style="color: rgb(194, 252, 183);position: absolute;margin-top: 8px;"></i>
+                        <h3 th:text="${collected}" class="text-center text-white">6000</h3>
+                        <p class="text-center text-white">Collected Payments</p>
+                    </a>
+                </div>
+                <div class="col-sm-3 border rounded shadow-lg p-3 mb-5 hoverFailure one hov"
+                     style="background-color: rgb(255, 155, 24);">
+                    <a class="linkdeco">
+                        <i class="fa fa-building-o fa-3x animated bounce slow"
+                           style="color: rgb(255, 255, 255);position: absolute;margin-top: 8px;"></i>
+                        <h3 th:text="${unitcost}" class="text-center text-white">10000</h3>
+                        <p class="text-center text-white">Unit Cost</p>
+                    </a>
+                </div>
+                <div class="col-sm-3 border rounded shadow-lg p-3 mb-5 hoverFailure one bg-primary hov"
+                     style="background-color: rgb(87, 145, 34);">
+                    <a class="linkdeco">
+                        <i class="fa fa-car fa-3x animated bounce slow"
+                           style="color: rgb(194, 252, 183);position: absolute;margin-top: 8px;"></i>
+                        <h3 th:text="${expenditures}" class="text-center text-white">2000</h3>
+                        <p class="text-center text-white">Expenditures</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section><!-- End Speakers Section -->
+
+    <section id="menu" class="section-with-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Mess Menu</h2>
+                <p>Here is the final mess menu</p>
+            </div>
+            <a class="btn btn-dark" th:href="@{/addMessMenue}">Add Mess Menu</a>
+            <div class="col-sm-12 table-responsive">
+                <!--               todo -->
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                        <th scope="col">Saturday</th>
+                        <th scope="col">Sunday</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="menu: ${menulist}">
+                        <td th:text="${menu.monday}"></td>
+                        <td th:text="${menu.tuesday}"></td>
+                        <td th:text="${menu.wednesday}"></td>
+                        <td th:text="${menu.thursday}"></td>
+                        <td th:text="${menu.friday}"></td>
+                        <td th:text="${menu.saturday}"></td>
+                        <td th:text="${menu.sunday}"></td>
+                        <td><a th:href="@{/showFormForMessMenu/{id}(id=${menu.id})}" class="btn btn-outline-primary">Edit</a></td>
+                        <td><a th:href="@{/deleteMessMenu/{id}(id=${menu.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Mess timing Section ======= -->
+    <section id="numbers">
+
+
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>All registered students in mess</h2>
+            </div>
+            <a class="btn btn-dark" th:href="@{/addStudent}">Register new student</a>
+            <a class="btn btn-primary" th:href="@{/goToFilter}">Filter Students</a>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student Room No</th>
+                        <th scope="col">Student Contact</th>
+                        <th scope="col">Student Hostel number</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student: ${students}">
+                        <td th:text="${student.studentName}"></td>
+                        <td th:text="${student.studentRoom}"></td>
+                        <td th:text="${student.studentPhone}"></td>
+                        <td th:text="${student.studentHostel}"></td>
+                        <td><a th:href="@{/showFormForUpdateStudent/{id}(id=${student.id})}" class="btn btn-outline-primary">Edit</a></td>
+                        <td><a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= On off Section ======= -->
+    <section id="onoff">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Student mess ON/OFF status</h2>
+                <p>All the following students are able to do the mess today</p>
+                <a class="btn btn-dark" th:href="@{/addOnOffStatus}">Add Student On_Off Status</a>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student Room No</th>
+                        <th scope="col">Breakfast Status</th>
+                        <th scope="col">Lunch Status</th>
+                        <th scope="col">Dinner Status</th>
+                        <th scope="col">Date Status</th>
+                        <th scope="col" colspan="1">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="status: ${on_off_list}">
+                        <td th:text="${status.student.studentName}"></td>
+                        <td th:text="${status.student.studentRoom}"></td>
+                        <td><input onclick="return false;" type="checkbox" name="active"
+                                   th:checked="${status.breakfast}"/></td>
+                        <td><input onclick="return false;" type="checkbox" name="active" th:checked="${status.lunch}"/>
+                        </td>
+                        <td><input onclick="return false;" type="checkbox" name="active" th:checked="${status.dinner}"/>
+                        </td>
+                        <td th:text="${status.date}"></td>
+                        <td><a th:href="@{/showFormForMessOnOffStatus/{id}(id=${status.id})}" class="btn btn-outline-primary">Edit</a></td>
+                        <!--                        <td><a class="btn btn-danger btn-sm">Delete</a></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Payments Section ======= -->
+    <section id="payments">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Students Payment Status</h2>
+                <p>All students have the following payment status till today</p>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <a class="btn btn-dark" th:href="@{/addPayments}">Add new payment</a>
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student Room No</th>
+                        <th scope="col">Student Contact</th>
+                        <th scope="col">Collected Amount</th>
+                        <th scope="col">Remaining Amount</th>
+                        <th scope="col">Monthly Charges</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student: ${paymentList}">
+                        <td th:text="${student.student.studentName}"></td>
+                        <td th:text="${student.student.studentRoom}"></td>
+                        <td th:text="${student.student.studentPhone}"></td>
+                        <td th:text="${student.collected}"></td>
+                        <td th:text="${student.remaining}"></td>
+                        <td th:text="${student.monthly_charges}"></td>
+                        <td><a th:href="@{/showFormForUpdatePaymentStatus/{id}(id=${student.id})}" class="btn btn-outline-primary">Edit</a></td>
+                        <td><a th:href="@{/deleteStudentPayment/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Mess timing Section ======= -->
+    <section id="messtimings">
+        <div class="section-header">
+            <h2>Mess Timings</h2>
+            <p>No one will be entertain without below timings</p>
+        </div>
+        <a class="btn btn-dark" th:href="@{/addMessTimings}">Add Mess Timing</a>
+        <div class="col-sm-12 table-responsive">
+            <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                <thead>
+                <tr style="height: fit-content;">
+                    <th scope="col">Breakfast Time</th>
+                    <th scope="col">Lunch Time</th>
+                    <th scope="col">Dinner Time</th>
+                    <th scope="col">Brunch Time only sunday</th>
+                    <th scope="col" colspan="2">Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="timing: ${messTimings}">
+                    <td th:text="${timing.breakfasttime}"></td>
+                    <td th:text="${timing.lunchtime}"></td>
+                    <td th:text="${timing.dinnertime}"></td>
+                    <td th:text="${timing.brunchtime}"></td>
+                    <td><a th:href="@{/showFormForUpdateMessTimingsStatus/{id}(id=${timing.id})}" class="btn btn-outline-primary">Edit</a></td>
+                    <td><a th:href="@{/deleteMessTimings/{id}(id=${timing.id})}" class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- unit details Section -->
+
+
+
+    <section id="unitsdetails">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Students Units Details</h2>
+                <p>Detailed day by day units and total units are shown</p>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <a class="btn btn-dark" rel="facebox" th:href="@{/addUnitDetails}">Add Unit Details</a>
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Name</th>
+                        <th scope="col">01</th>
+                        <th scope="col">02</th>
+                        <th scope="col">03</th>
+                        <th scope="col">04</th>
+                        <th scope="col">05</th>
+                        <th scope="col">06</th>
+                        <th scope="col">07</th>
+                        <th scope="col">08</th>
+                        <th scope="col">09</th>
+                        <th scope="col">10</th>
+                        <th scope="col">11</th>
+                        <th scope="col">12</th>
+                        <th scope="col">13</th>
+                        <th scope="col">14</th>
+                        <th scope="col">15</th>
+                        <th scope="col">16</th>
+                        <th scope="col">17</th>
+                        <th scope="col">18</th>
+                        <th scope="col">19</th>
+                        <th scope="col">20</th>
+                        <th scope="col">21</th>
+                        <th scope="col">22</th>
+                        <th scope="col">23</th>
+                        <th scope="col">24</th>
+                        <th scope="col">25</th>
+                        <th scope="col">26</th>
+                        <th scope="col">27</th>
+                        <th scope="col">28</th>
+                        <th scope="col">29</th>
+                        <th scope="col">30</th>
+                        <th scope="col">31</th>
+                        <th scope="col">Total Units</th>
+                        <th scope="col" colspan="2">Operations</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="btn btn-outline-primary">Edit</a></td>
+                        <td><a class="btn btn-danger btn-sm">Delete Complete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Mess Manager Section ======= -->
+    <section id="messmanagers" class="section-with-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Mess Managers</h2>
+                <p>Current Mess Managers are show below </p>
+                <div class="text-center">
+                    <a th:href="@{/addMessManager}" class="btn btn-dark" style="color: white">Add New Mess Manager</a>
+                </div>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6">
+                    <div class="hotel">
+                        <div class="hotel-img">
+                            <img src="https://scontent.fkhi10-1.fna.fbcdn.net/v/t1.0-9/119628013_2534798196810226_586316793587294387_o.jpg?_nc_cat=108&ccb=2&_nc_sid=730e14&_nc_eui2=AeGbxZO3DWARPQ7fZq2XcysX3QHvJXfj_VzdAe8ld-P9XLODvrZm2h4DepX1zZ30bt-1jrVDi0B0aUSDmDMUVRdD&_nc_ohc=t1u9782-uMwAX9_LvVz&_nc_ht=scontent.fkhi10-1.fna&oh=a03c59a50f5cd10a98ddd2bbf7c1a00e&oe=5FFBEBAC"
+                                 alt="Fahad Shahzad" class="img-fluid"></div>
+                        <h3><a href="#">Fahad Shahzad</a></h3>
+                        <p>Room No.18</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="hotel">
+                        <div class="hotel-img"><img
+                                src="https://scontent.fkhi10-1.fna.fbcdn.net/v/t1.0-9/117039080_667200817214990_7475903683545576478_o.jpg?_nc_cat=105&ccb=2&_nc_sid=174925&_nc_eui2=AeH3T28a5Pkvrx13xM_Ds_YKD2fxZx0qWOAPZ_FnHSpY4DVeKrmMFOZyTPhDtK4dHIQesB--ZXFNruTTpSn2ba6g&_nc_ohc=a1HM09ADJmgAX-T97zT&_nc_oc=AQl7OssIIJRa4WTLZBlv-cxXZQDhgrtFzAYI4xPoIPFBxyYCvlbBAB8hiQh3jY2dO7E&_nc_ht=scontent.fkhi10-1.fna&oh=7c42af536f25e3ebf5ec1e68a8532e1c&oe=5FFA74B1"
+                                alt="Muhammad Yamin" class="img-fluid"></div>
+                        <h3><a href="#">Muhammad Yamin</a></h3>
+                        <p>Room No.18</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Mess Manager Section -->
+
+    <!-- =======  F.A.Q Section ======= -->
+    <section id="faq">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>F.A.Q.s </h2>
+                <div class="text-center">
+                    <button data-toggle="modal" data-target="#addnewfaq" type="button" class="btn btn-dark">Add New
+                        F.A.Q
+                    </button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-9">
+                    <ul id="faq-list">
+
+                        <li>
+                            <a data-toggle="collapse" class="collapsed" href="#faq1">Are outsiders allowed here to mess?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq1" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    Just Registered are allowed
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq2" class="collapsed">What are the extra-units for one
+                                guest?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq2" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    5 units are extra
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq3" class="collapsed">How can I close my mess
+                                permanently?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq3" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    You need to contact to Mess Manager 0301-7021045
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq4" class="collapsed">What if my units are entered
+                                incorrectly?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq4" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    Contact to Mess Manager 0301-7021045
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq5" class="collapsed">Can i edit my units?<i
+                                    class="fa fa-minus-circle"></i></a>
+                            <div id="faq5" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    No Just admin can Edit
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq6" class="collapsed">How can i check my daily units?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq6" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    They are shown above
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- End  F.A.Q Section -->
+
+    <!-- ======= Subscribe Section ======= -->
+    <h1 style="margin-top: 10%"></h1>
+    <!-- ======= Contact Section ======= -->
+    <section id="contactus" class="section-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <a th:href="@{/addContactUs}" class="btn btn-dark">Add Contact Details</a>
+                <p>Contact for any kind of help if urgent then do sms</p>
+            </div>
+
+            <div class="row contact-info">
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Mess Manager 1</h3>
+                        <address>Mr. Fahad Shahzad</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+923017021045">Make phone call to Fahad</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:fahad.qureshi@i2p.com.pk">Mail to Fahad</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Mess Manager 2</h3>
+                        <address>Mr. Muhammad Yamin</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+923157113531">Make phone call to Yamin</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Mail</h3>
+                        <p><a href="mailto:myamin.bcss19@iba-suk.edu.pk">Do mail to Yamin</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>SIBA Mess</strong>. All Rights Reserved by Warrior Group of Companies
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/venobox/venobox.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/superfish/superfish.min.js"></script>
+<script src="vendor/hoverIntent/hoverIntent.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+[33mcommit 4f4619eeb8e1e5af33ebf8f1511453364b7b654c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 11115e7 63073ec
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Sun Dec 13 16:21:30 2020 +0500
+
+    Merge pull request #4 from fahad-qureshi786/feature/restApis
+    
+    Feature/rest apis
+
+[33mcommit 63073ec97cbb7b27bb04a79a7b689980a3be5d2e[m[33m ([m[1;31morigin/feature/restApis[m[33m, [m[1;32mfeature/restApis[m[33m)[m
+Author: fahadshahzad786 <programmerwarrior9@gmail.com>
+Date:   Sun Dec 13 16:19:10 2020 +0500
+
+    resolve templates bugs and add crud templates
+
+[33mcommit dc3e55dad83a47a1431b560caa9700cecebdce64[m
+Author: fahadshahzad786 <programmerwarrior9@gmail.com>
+Date:   Sat Dec 12 03:26:03 2020 +0500
+
+    add some rest APIs and repos
+
+[33mcommit 11115e769b00328507d3985d76196305c8beb638[m
+Merge: 3dc6a4c 4480ea4
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Fri Dec 11 16:37:44 2020 +0500
+
+    Merge pull request #3 from fahad-qureshi786/feature/models
+    
+    add models to db
+
+[33mcommit 4480ea4e6b9beffc5ddd31995bd5ca76d9106a89[m[33m ([m[1;31morigin/feature/models[m[33m, [m[1;32mfeature/models[m[33m)[m
+Author: fahadshahzad786 <programmerwarrior9@gmail.com>
+Date:   Fri Dec 11 13:22:55 2020 +0500
+
+    add models to db
+
+[33mcommit 3dc6a4ceb4b8a66c7fc90a6a960a6c71b3e04e28[m
+Merge: 8cedbea 3e90ced
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Fri Dec 11 02:30:52 2020 +0500
+
+    Merge pull request #1 from fahad-qureshi786/feature/documentation
+    
+    Feature/documentation
+
+[33mcommit 8cedbeaef6296861ff07ab6d7d390b592457a191[m
+Author: fahadshahzad786 <programmerwarrior9@gmail.com>
+Date:   Fri Dec 11 02:27:06 2020 +0500
+
+    master add project baseline
+
+[33mcommit 3e90ced0ce733b37e1193b897c8ebec5f9c25e19[m[33m ([m[1;31morigin/feature/documentation[m[33m)[m
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Fri Dec 11 02:16:29 2020 +0500
+
+    Make group member setting
+
+[33mcommit e023c363b56defedf36b4ebcb401cde552e987bb[m
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Fri Dec 11 02:15:16 2020 +0500
+
+    Add Project Details
+
+[33mcommit d987dca94a8710dc07ce5e76798eaae35ee6c2bc[m
+Author: fahad-qureshi786 <75601362+fahad-qureshi786@users.noreply.github.com>
+Date:   Fri Dec 11 02:01:03 2020 +0500
+
+    Initial commit

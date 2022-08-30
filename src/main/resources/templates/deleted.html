@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SIBAU MESS</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="vendor/venobox/venobox.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/superfish/superfish.min.js"></script>
+    <script src="vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+<header id="header">
+    <div id="logo" class="pull-left">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <a th:href="@{/}">Siba <span>Mess System</span></a>
+    </div>
+
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li class="menu-active"><a th:href="@{/}">Home</a></li>
+            <li><a href="#cookandhelper">Cook and Helpers</a></li>
+            <li><a href="#numbers">Numbers</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#onoff">ON/OFF</a></li>
+            <li><a href="#payments">Payments</a></li>
+            <li><a href="#messtimings">Timings</a></li>
+            <li><a href="#unitsdetails">Units Details</a></li>
+            <li><a href="#messmanagers">Mess Managers</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#contactus">Contact Us</a></li>
+            <li class="buy-tickets"><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<section id="intro">
+    <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1 class="mb-4 pb-0">Deleted<br><span>Records IBA</span><br> Mess Management System</h1>
+        <a href="https://pscs.iba-suk.edu.pk/psp/HRCS9/?cmd=login&languageCd=ENG&" class="about-btn scrollto">Go to CMS</a>
+        <a href="http://lms.iba-suk.edu.pk/login/index.php" class="about-btn scrollto">Go to LMS</a>
+    </div>
+</section>
+
+
+<main id="main">
+
+    <section id="cookandhelper">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Cook and Helper</h2>
+                    <h3 style="margin-left: 120px">Cook</h3>
+                    <label>Name: </label>&nbsp <input type="text" readonly th:value="${cookDetails.get(0)}" name="name"><br>
+                    <label>Phone: </label> <input readonly th:value="${cookDetails.get(1)}" type="text" name="Phone"><br>
+                    <a th:href="@{/recoverCook/{id}(id=${cookDetails.get(2)})}" style="margin-top: 60%" class="btn btn-danger btn-sm">Recover</a>
+                    </label>
+                    <br>
+                </div>
+                <div class="col-lg-3">
+                    <h3 style="margin-top: 33px; margin-right: 10px">Helper</h3>
+                    <label style="margin-top: 7%">Name: </label>&nbsp <input readonly th:value="${helperDetails.get(0)}" type="text" name="name"><br>
+                    <label>Phone: </label> <input readonly th:value="${helperDetails.get(1)}" type="text" name="Phone">
+                    <br>
+                </div>
+                <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+                    <a th:href="@{/recoverHelper/{id}(id=${helperDetails.get(2)})}" style="margin-top: 60%"
+                       class="btn btn-danger btn-sm">Recover</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section-with-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Mess Menu</h2>
+                <p>Here is the final mess menu</p>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                        <th scope="col">Saturday</th>
+                        <th scope="col">Sunday</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="menu: ${menulist}">
+                        <td th:text="${menu.monday}"></td>
+                        <td th:text="${menu.tuesday}"></td>
+                        <td th:text="${menu.wednesday}"></td>
+                        <td th:text="${menu.thursday}"></td>
+                        <td th:text="${menu.friday}"></td>
+                        <td th:text="${menu.saturday}"></td>
+                        <td th:text="${menu.sunday}"></td>
+                        <td><a th:href="@{/recoverMessMenu/{id}(id=${menu.id})}"
+                               class="btn btn-danger btn-sm">Recover</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Mess timing Section ======= -->
+    <section id="students">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>All registered students in mess</h2>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student Room No</th>
+                        <th scope="col">Student Contact</th>
+                        <th scope="col">Student Hostel number</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student: ${students}">
+                        <td th:text="${student.studentName}"></td>
+                        <td th:text="${student.studentRoom}"></td>
+                        <td th:text="${student.studentPhone}"></td>
+                        <td th:text="${student.studentHostel}"></td>
+                        <td><a th:href="@{/recoverStudent/{id}(id=${student.id})}"
+                               class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Payments Section ======= -->
+    <section id="payments">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Students Payment Status</h2>
+                <p>All students have the following payment status till today</p>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                    <thead>
+                    <tr style="height: fit-content;">
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student Room No</th>
+                        <th scope="col">Student Contact</th>
+                        <th scope="col">Collected Amount</th>
+                        <th scope="col">Remaining Amount</th>
+                        <th scope="col">Monthly Charges</th>
+                        <th scope="col" colspan="2">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student: ${paymentList}">
+                        <td th:text="${student.student.studentName}"></td>
+                        <td th:text="${student.student.studentRoom}"></td>
+                        <td th:text="${student.student.studentPhone}"></td>
+                        <td th:text="${student.collected}"></td>
+                        <td th:text="${student.remaining}"></td>
+                        <td th:text="${student.monthly_charges}"></td>
+                        <td><a th:href="@{/recoverStudentPayment/{id}(id=${student.id})}" class="btn btn-danger btn-sm">Recover</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Mess timing Section ======= -->
+    <section id="messtimings">
+        <div class="section-header">
+            <h2>Mess Timings</h2>
+            <p>No one will be entertain without below timings</p>
+        </div>
+        <div class="col-sm-12 table-responsive">
+            <table class="table table-hover table-striped" style="font-size: small;overflow-x: scroll;">
+                <thead>
+                <tr style="height: fit-content;">
+                    <th scope="col">Breakfast Time</th>
+                    <th scope="col">Lunch Time</th>
+                    <th scope="col">Dinner Time</th>
+                    <th scope="col">Brunch Time only sunday</th>
+                    <th scope="col" colspan="2">Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="timing: ${messTimings}">
+                    <td th:text="${timing.breakfasttime}"></td>
+                    <td th:text="${timing.lunchtime}"></td>
+                    <td th:text="${timing.dinnertime}"></td>
+                    <td th:text="${timing.brunchtime}"></td>
+                    <td><a class="btn btn-primary btn-sm">Edit</a></td>
+                    <td><a th:href="@{/recoverMessTimings/{id}(id=${timing.id})}" class="btn btn-danger btn-sm">Recover</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- =======  F.A.Q Section ======= -->
+    <section id="faq">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>F.A.Q.s </h2>
+                <div class="text-center">
+                    <button data-toggle="modal" data-target="#addnewfaq" type="button" class="btn btn-info">Add New
+                        F.A.Q
+                    </button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-9">
+                    <ul id="faq-list">
+
+                        <li>
+                            <a data-toggle="collapse" class="collapsed" href="#faq1">Are outsiders allowed here to mess?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq1" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    Just Registered are allowed
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq2" class="collapsed">What are the extra-units for one
+                                guest?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq2" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    5 units are extra
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq3" class="collapsed">How can I close my mess
+                                permanently?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq3" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    You need to contact to Mess Manager 0301-7021045
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq4" class="collapsed">What if my units are entered
+                                incorrectly?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq4" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    Contact to Mess Manager 0301-7021045
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq5" class="collapsed">Can i edit my units?<i
+                                    class="fa fa-minus-circle"></i></a>
+                            <div id="faq5" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    No Just admin can Edit
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a data-toggle="collapse" href="#faq6" class="collapsed">How can i check my daily units?
+                                <i class="fa fa-minus-circle"></i></a>
+                            <div id="faq6" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    They are shown above
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- End  F.A.Q Section -->
+
+    <!-- ======= Subscribe Section ======= -->
+    <h1 style="margin-top: 10%"></h1>
+    <!-- ======= Contact Section ======= -->
+    <section id="contactus" class="section-bg">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Contact for any kind of help if urgent then do sms</p>
+            </div>
+
+            <div class="row contact-info">
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Mess Manager 1</h3>
+                        <address>Mr. Fahad Shahzad</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+923017021045">Make phone call to Fahad</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:fahad.qureshi@i2p.com.pk">Mail to Fahad</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Mess Manager 2</h3>
+                        <address>Mr. Muhammad Yamin</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+923157113531">Make phone call to Yamin</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Mail</h3>
+                        <p><a href="mailto:myamin.bcss19@iba-suk.edu.pk">Do mail to Yamin</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>SIBA Mess</strong>. All Rights Reserved by Warrior Group of Companies
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/venobox/venobox.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/superfish/superfish.min.js"></script>
+<script src="vendor/hoverIntent/hoverIntent.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

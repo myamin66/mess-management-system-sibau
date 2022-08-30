@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="vendor/venobox/venobox.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/superfish/superfish.min.js"></script>
+    <script src="vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Add new Student</title>
+</head>
+<body>
+
+<header style="background-color: #3f9af2; color: white" id="header">
+    <div id="logo" class="pull-left">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <a style="color: white" th:href="@{/}">Siba <span>Mess System</span></a>
+    </div>
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li class="menu-active"><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/}">Cook and Helpers</a></li>
+            <li><a th:href="@{/}">Numbers</a></li>
+            <li><a th:href="@{/}">Menu</a></li>
+            <li><a th:href="@{/}">ON/OFF</a></li>
+            <li><a th:href="@{/}">Payments</a></li>
+            <li><a th:href="@{/}">Timings</a></li>
+            <li><a th:href="@{/}">Units Details</a></li>
+            <li><a th:href="@{/}">Mess Managers</a></li>
+            <li><a th:href="@{/}">FAQs</a></li>
+            <li><a th:href="@{/}">Contact Us</a></li>
+            <li class="buy-tickets"><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<div class="container" id="content" style="margin-top:10%;">
+    <form action="#" th:action="@{/saveStudent}" th:object="${student}" method="POST">
+        <fieldset>
+            <legend style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Please enter Students Details
+            </legend>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="studentName">Student name</label>
+                    <input autofocus title="Student name" th:field="*{studentName}" type="text"
+                           class="form-control" id="studentName" aria-describedby="nameHelp"
+                           placeholder="Student name" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentCMS">CMS ID of Student</label>
+                    <input title="CMS id" th:field="*{studentCMS}" type="text"
+                           class="form-control" id="studentCMS" placeholder="cms id" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentPhone">Contact number</label>
+                    <input th:field="*{studentPhone}" type="number" title="Student Phone"
+                           class="form-control" id="studentPhone" placeholder="Student phone" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="studentRoom">Room number</label>
+                    <input title="Room number" th:field="*{studentRoom}" type="number" class="form-control"
+                           id="studentRoom" placeholder="Room number" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentHostel">Hostel</label>
+                    <input title="Hostel " th:field="*{studentHostel}" type="text" class="form-control"
+                           id="studentHostel" placeholder="Hostel" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentSemester">Semester</label>
+                    <input title="Semester" th:field="*{studentSemester}"
+                           type="text" class="form-control" id="studentSemester"
+                           placeholder="Semester" required>
+                </div>
+            </div>
+            <div class="row" th:if="${error}">
+                <p style="color:red; font-family:'Eras Bold ITC'" th:text="${error}"></p>
+            </div>
+            <span id="showBtnUpdate">
+        <button type="submit" class="btn btn-primary">Save Menu</button>
+    </span>
+        </fieldset>
+    </form>
+</div>
+
+
+<footer style="background-color: #3f9af2;margin-top: 10%; color: white" id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>SIBA Mess</strong>. All Rights Reserved by Warrior Group of Companies
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/venobox/venobox.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/superfish/superfish.min.js"></script>
+<script src="vendor/hoverIntent/hoverIntent.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

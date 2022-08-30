@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="vendor/venobox/venobox.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/superfish/superfish.min.js"></script>
+    <script src="vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Add new Student for ON/OFF</title>
+    <script>
+        function selectStudent(sel) {
+            var str = sel.options[sel.selectedIndex].text;
+            var cid = str.split("-");
+            document.getElementById("myid").value = cid[0];
+        }
+    </script>
+</head>
+<body>
+<header style="background-color: #3f9af2; color: white" id="header">
+    <div id="logo" class="pull-left">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <a style="color: white" th:href="@{/}">Siba <span>Mess System</span></a>
+    </div>
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li class="menu-active"><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/}">Cook and Helpers</a></li>
+            <li><a th:href="@{/}">Numbers</a></li>
+            <li><a th:href="@{/}">Menu</a></li>
+            <li><a th:href="@{/}">ON/OFF</a></li>
+            <li><a th:href="@{/}">Payments</a></li>
+            <li><a th:href="@{/}">Timings</a></li>
+            <li><a th:href="@{/}">Units Details</a></li>
+            <li><a th:href="@{/}">Mess Managers</a></li>
+            <li><a th:href="@{/}">FAQs</a></li>
+            <li><a th:href="@{/}">Contact Us</a></li>
+            <li class="buy-tickets"><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<div class="container" id="content" style="margin-top:20%;">
+    <form action="#" th:action="@{/saveOnOffStatus}" th:object="${onOff}" method="POST">
+        <fieldset>
+            <legend style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Enter on off status of students
+            </legend>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="student">Student name</label>
+                    <select onchange="selectStudent(this);" required title="Student name" class="form-control"
+                            id="student">
+                        <option></option>
+                        <option th:each="student: ${students}" th:text="${student}"></option>
+                    </select>
+                    <input required type="hidden" th:field="*{student}" class="form-control" id="myid">
+                </div>
+                <div class="col-sm-2">
+                    <label for="breakfast">Breakfast</label>
+                    <input autofocus title="Breakfast" type="checkbox" th:field="*{breakfast}" checked
+                           class="form-control" id="breakfast" aria-describedby="productHelp">
+                </div>
+                <div class="col-sm-2">
+                    <label for="Lunch">Lunch</label>
+                    <input title="Lunch status" checked type="checkbox"
+                           th:field="*{lunch}" class="form-control" id="Lunch">
+                </div>
+                <div class="col-sm-2">
+                    <label for="Dinner">Dinner</label>
+                    <input checked type="checkbox" th:field="*{dinner}" class="form-control" id="Dinner">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="row" th:if="${error}">
+                    <p style="color: red; font-family: 'Script MT Bold'" th:text="${error}"></p>
+                </div>
+                <span id="showBtnUpdate">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </span>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+<footer style="background-color: #3f9af2;margin-top: 20%; color: white" id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>SIBA Mess</strong>. All Rights Reserved by Warrior Group of Companies
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/venobox/venobox.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/superfish/superfish.min.js"></script>
+<script src="vendor/hoverIntent/hoverIntent.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

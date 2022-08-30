@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Update Mess Menu</title>
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-primary">Go to home</a>
+<div class="container" id="content" style="margin-top:10%;">
+    <form action="#" th:action="@{/student/saveUpdate}" th:object="${student}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <fieldset>
+            <legend style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Update Students Details
+            </legend>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="studentName">Student name</label>
+                    <input autofocus title="Student name" th:field="*{studentName}" type="text"
+                           class="form-control" id="studentName" aria-describedby="nameHelp"
+                           placeholder="Student name" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentCMS">CMS ID of Student</label>
+                    <input title="CMS id" th:field="*{studentCMS}" type="text"
+                           class="form-control" id="studentCMS" placeholder="cms id" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentPhone">Contact number</label>
+                    <input th:field="*{studentPhone}" type="number" title="Student Phone"
+                           class="form-control" id="studentPhone" placeholder="Student phone" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="studentRoom">Room number</label>
+                    <input title="Room number" th:field="*{studentRoom}" type="number" class="form-control"
+                           id="studentRoom" placeholder="Room number" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentHostel">Hostel</label>
+                    <input title="Hostel " th:field="*{studentHostel}" type="text" class="form-control"
+                           id="studentHostel" placeholder="Hostel" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="studentSemester">Semester</label>
+                    <input title="Semester" th:field="*{studentSemester}"
+                           type="text" class="form-control" id="studentSemester"
+                           placeholder="Semester" required>
+                </div>
+            </div>
+            <div class="row" th:if="${error}">
+                <p style="color:red; font-family:'Eras Bold ITC'" th:text="${error}"></p>
+            </div>
+            <span id="showBtnUpdate">
+        <button type="submit" class="btn btn-primary">Save Menu</button>
+    </span>
+        </fieldset>
+    </form>
+</div>
+
+</body>
+</html>

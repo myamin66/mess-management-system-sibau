@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="vendor/venobox/venobox.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/superfish/superfish.min.js"></script>
+    <script src="vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Add New Cook or Helper</title>
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-block">Go to Home</a>
+<div class="container" id="content" style="margin-top:2%;">
+    <form action="#" th:action="@{/helper/saveUpdate}" th:object="${helperDetails}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <fieldset>
+            <legend style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Update Helper</legend>
+            <div class="form-group">
+                <label for="helperName">Helper Name</label>
+                <input th:field="*{name}" type="text" class="form-control" id="helperName"
+                       aria-describedby="nameHelp" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="helperPhone">Helper Phone</label>
+                <input th:field="*{phone}" type="text" class="form-control" id="helperPhone" aria-describedby="phoneHelp" placeholder="Enter Phone number">
+            </div>
+            <div class="form-group">
+                <label for="helperPhone">Status</label>
+                <input readonly value="Helper" th:field="*{status}" type="text" class="form-control" id="helperStatus" aria-describedby="phoneHelp" placeholder="Enter Phone number">
+            </div>
+            <div class="form-group">
+                <label for="helperPhone">Date update</label>
+                <input required type="datetime-local" value="date" th:field="*{updatedDate}" class="form-control" id="date" aria-describedby="phoneHelp" placeholder="Enter date update">
+            </div>
+            <span id="showBtnUpdate">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </span>
+        </fieldset>
+    </form>
+</div>
+
+</body>
+</html>

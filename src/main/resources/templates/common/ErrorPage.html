@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body style="background-image: url('https://cdn.theatlantic.com/thumbor/pXkiRWhPf5MR8pXSKXnPSZxF5oQ=/1920x1080/media/img/2020/07/28/WEL_Andersen_ChinaOpenerREDO/original.gif'); background-repeat: no-repeat; background-size:cover; width: 100%; height: 100%">
+
+<div class="row" th:if="${error}">
+    <h1 style="color: white; font-family: 'Script MT Bold'" th:text="${error}"></h1>
+</div>
+</body>
+</html>
